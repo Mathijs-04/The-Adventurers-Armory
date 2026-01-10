@@ -13,6 +13,12 @@ import ProductCard from './ProductCard.vue'
       <ProductCard />
       <ProductCard />
       <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
+      <ProductCard />
     </div>
   </div>
 </template>
@@ -37,22 +43,11 @@ import ProductCard from './ProductCard.vue'
 }
 
 .products-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.product-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  height: 200px;
-  border: 2px dashed #ccc;
-  border-radius: 8px;
-  background: #f9f9f9;
-  font-size: 18px;
-  color: #666;
-}
 </style>
