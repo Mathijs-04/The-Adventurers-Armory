@@ -1,11 +1,31 @@
 <script setup>
+import { computed } from 'vue'
 import ProductCard from './ProductCard.vue'
 import PlaceholderImage from '../assets/Placeholder.png'
 
-const emit = defineEmits(['viewDetails'])
+const props = defineProps({
+  cartItems: {
+    type: Array,
+    default: () => []
+  }
+})
+
+const emit = defineEmits(['viewDetails', 'addToCart', 'removeFromCart'])
 
 const handleProductDetails = (product) => {
   emit('viewDetails', product)
+}
+
+const handleAddToCart = (product) => {
+  emit('addToCart', product)
+}
+
+const handleRemoveFromCart = (product) => {
+  emit('removeFromCart', product)
+}
+
+const isProductInCart = (productName) => {
+  return props.cartItems.some(item => item.name === productName)
 }
 
 const products = [
@@ -69,7 +89,10 @@ const products = [
         :price="product.price"
         :description="product.description"
         :image="product.image"
+        :is-in-cart="isProductInCart(product.name)"
         @view-details="handleProductDetails"
+        @add-to-cart="handleAddToCart"
+        @remove-from-cart="handleRemoveFromCart"
       />
     </div>
   </div>

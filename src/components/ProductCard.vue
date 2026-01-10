@@ -24,10 +24,14 @@ const props = defineProps({
     image: {
         type: String,
         default: '../src/assets/Placeholder.png'
+    },
+    isInCart: {
+        type: Boolean,
+        default: false
     }
 })
 
-const emit = defineEmits(['viewDetails'])
+const emit = defineEmits(['viewDetails', 'addToCart', 'removeFromCart'])
 
 const handleDetailsClick = () => {
   emit('viewDetails', {
@@ -36,6 +40,21 @@ const handleDetailsClick = () => {
     price: props.price,
     image: props.image
   })
+}
+
+const handleCartClick = () => {
+  const product = {
+    name: props.name,
+    description: props.description,
+    price: props.price,
+    image: props.image
+  }
+  
+  if (props.isInCart) {
+    emit('removeFromCart', product)
+  } else {
+    emit('addToCart', product)
+  }
 }
 </script>
 
@@ -54,7 +73,7 @@ const handleDetailsClick = () => {
     <template #footer>
       <div class="flex gap-4 mt-1">
         <DetailsButton @click="handleDetailsClick" />
-        <CartButton />
+        <CartButton :is-in-cart="isInCart" @click="handleCartClick" />
       </div>
     </template>
   </Card>
