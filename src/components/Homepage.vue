@@ -9,8 +9,7 @@ const goToStore = () => {
 <template>
   <div class="homepage">
     <div class="hero">
-      <h1 class="hero-title">Homepage Title</h1>
-      <h2 class="hero-subtitle">Homepage Subtitle</h2>
+      <img src="../assets/logo.webp" /> 
       <p class="hero-description">Homepage description text placeholder</p>
       <button @click="goToStore" class="hero-button">Go to Store</button>
     </div>
