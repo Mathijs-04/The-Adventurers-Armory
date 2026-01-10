@@ -4,3 +4,5 @@ Ideeen:
 -Standaard image achtergrond met AI productafbeelding op voorgrond
 -Grappig alternatief voor winkelmand
 -Fantasy achtergrond
+-Custom font
+-Reviews in gekke fantasy talen fonts

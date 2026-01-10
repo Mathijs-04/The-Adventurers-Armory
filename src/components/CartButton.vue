@@ -18,7 +18,8 @@ const handleClick = () => {
 <template>
   <Button 
     :label="isInCart ? 'Remove from cart' : 'Add to cart'" 
-    :severity="isInCart ? 'danger' : undefined"
+    severity="secondary"
+    variant="outlined"
     class="w-full" 
     @click="handleClick" 
   />

@@ -49,9 +49,9 @@ const removeFromCart = (product) => {
       @click="navigateBack" 
       class="back-button"
     >
-      Back
+      ←
     </button>
-    <div class="cart-counter">{{ cartCount }}</div>
+    <div class="cart-counter">cart: {{ cartCount }}</div>
     <Homepage v-if="currentView === 'homepage'" @navigate-to-store="navigateToStore" />
     <Store 
       v-if="currentView === 'store'" 
@@ -95,12 +95,6 @@ const removeFromCart = (product) => {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: #333;
-  color: white;
   padding: 10px 15px;
-  border-radius: 50%;
-  min-width: 30px;
-  text-align: center;
-  font-weight: bold;
 }
 </style>
