@@ -26,6 +26,17 @@ const props = defineProps({
         default: '../src/assets/Placeholder.png'
     }
 })
+
+const emit = defineEmits(['viewDetails'])
+
+const handleDetailsClick = () => {
+  emit('viewDetails', {
+    name: props.name,
+    description: props.description,
+    price: props.price,
+    image: props.image
+  })
+}
 </script>
 
 <template>
@@ -34,7 +45,7 @@ const props = defineProps({
       <img alt="product image" :src="image" style="width: 100%; height: auto; display: block;" />
     </template>
     <template #title>{{ name }}</template>
-    <template #subtitle>{{ Price }} Gold</template>
+    <template #subtitle>{{ price }} Gold</template>
     <template #content>
       <p class="m-0">
        {{ description }}
@@ -42,7 +53,7 @@ const props = defineProps({
     </template>
     <template #footer>
       <div class="flex gap-4 mt-1">
-        <DetailsButton />
+        <DetailsButton @click="handleDetailsClick" />
         <CartButton />
       </div>
     </template>

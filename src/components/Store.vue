@@ -1,5 +1,57 @@
 <script setup>
 import ProductCard from './ProductCard.vue'
+import PlaceholderImage from '../assets/Placeholder.png'
+
+const emit = defineEmits(['viewDetails'])
+
+const handleProductDetails = (product) => {
+  emit('viewDetails', product)
+}
+
+const products = [
+  {
+    id: 1,
+    name: 'Product 1',
+    price: 1,
+    description: 'Product Description 1',
+    image: PlaceholderImage
+  },
+  {
+    id: 2,
+    name: 'Product 2',
+    price: 2,
+    description: 'Product Description 2',
+    image: PlaceholderImage
+  },
+  {
+    id: 3,
+    name: 'Product 3',
+    price: 3,
+    description: 'Product Description 3',
+    image: PlaceholderImage
+  },
+  {
+    id: 4,
+    name: 'Product 4',
+    price: 4,
+    description: 'Product Description 4',
+    image: PlaceholderImage
+  },
+  {
+    id: 5,
+    name: 'Product 5',
+    price: 5,
+    description: 'Product Description 5',
+    image: PlaceholderImage
+  },
+  {
+    id: 6,
+    name: 'Product 6',
+    price: 6,
+    description: 'Product Description 6',
+    image: PlaceholderImage
+  }
+]
 </script>
 
 <template>
@@ -10,15 +62,15 @@ import ProductCard from './ProductCard.vue'
     </div>
 
     <div class="products-container">
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
-      <ProductCard />
+        <ProductCard 
+        v-for="product in products"
+        :key="product.id"
+        :name="product.name"
+        :price="product.price"
+        :description="product.description"
+        :image="product.image"
+        @view-details="handleProductDetails"
+      />
     </div>
   </div>
 </template>
