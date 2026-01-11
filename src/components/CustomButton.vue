@@ -64,7 +64,10 @@ const handleClick = () => {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: transparent;
+  background: linear-gradient(45deg, #ffd700 0%, #ffed4a 50%, #ffd700 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
   font-family: 'Firlest', Arial, sans-serif;
   font-size: 25px;
   font-weight: normal;

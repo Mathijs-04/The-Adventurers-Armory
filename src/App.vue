@@ -4,9 +4,12 @@ import Homepage from './components/Homepage.vue'
 import Store from './components/Store.vue'
 import Details from './components/Details.vue'
 import SoundToggle from './components/SoundToggle.vue'
+import ArrowBack from './assets/ArrowBack.webp'
+import ArrowBackHover from './assets/ArrowBackHover.webp'
 
 const currentView = ref('homepage')
 const selectedProduct = ref(null)
+const isArrowHovered = ref(false)
 
 const navigateToStore = () => {
   currentView.value = 'store'
@@ -31,9 +34,15 @@ const viewDetails = (product) => {
     <button
       v-if="currentView !== 'homepage'"
       @click="navigateBack"
+      @mouseenter="isArrowHovered = true"
+      @mouseleave="isArrowHovered = false"
       class="back-button"
     >
-      ←
+      <img
+        :src="isArrowHovered ? ArrowBackHover : ArrowBack"
+        alt="Back"
+        class="back-arrow"
+      />
     </button>
     <SoundToggle />
     <Homepage
@@ -63,11 +72,21 @@ const viewDetails = (product) => {
   position: fixed;
   top: 20px;
   left: 20px;
-  padding: 10px 15px;
+  padding: 8px;
+  margin-top: -3svh;
   cursor: pointer;
-  border: 1px solid #ccc;
-  background: white;
-  border-radius: 4px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
   z-index: 1000;
+  transition: background-color 0.2s ease;
+}
+
+
+.back-arrow {
+  width: 128px;
+  height: 128px;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 </style>
