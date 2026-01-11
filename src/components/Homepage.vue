@@ -27,7 +27,7 @@ const goToStore = () => {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('../assets/HomeView.webp');
+  background-image: url('../assets/HomeViewV2.webp');
   background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -48,7 +48,7 @@ const goToStore = () => {
 }
 
 .custom-button {
-  margin-top: -8svh;
+  margin-top: -20svh;
 }
 
 

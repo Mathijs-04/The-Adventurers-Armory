@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import Homepage from './components/Homepage.vue'
 import Store from './components/Store.vue'
 import Details from './components/Details.vue'
+import SoundToggle from './components/SoundToggle.vue'
 
 const currentView = ref('homepage')
 const selectedProduct = ref(null)
@@ -27,21 +28,22 @@ const viewDetails = (product) => {
 
 <template>
   <div id="app">
-    <button 
-      v-if="currentView !== 'homepage'" 
-      @click="navigateBack" 
+    <button
+      v-if="currentView !== 'homepage'"
+      @click="navigateBack"
       class="back-button"
     >
       ←
     </button>
-    <Homepage 
-      v-if="currentView === 'homepage'" 
+    <SoundToggle />
+    <Homepage
+      v-if="currentView === 'homepage'"
       @navigate-to-store="navigateToStore"
     />
-    <Store 
-      v-if="currentView === 'store'" 
+    <Store
+      v-if="currentView === 'store'"
     />
-    <Details 
+    <Details
       v-if="currentView === 'details' && selectedProduct"
       :name="selectedProduct.name"
       :description="selectedProduct.description"

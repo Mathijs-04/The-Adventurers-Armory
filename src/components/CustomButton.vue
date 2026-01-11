@@ -2,6 +2,7 @@
 import ButtonNA from '../assets/Button-NA.webp'
 import ButtonA from '../assets/Button-A.webp'
 import { ref } from 'vue'
+import { playButtonSound } from '../composables/useSound.js'
 
 const props = defineProps({
   text: {
@@ -17,6 +18,7 @@ const props = defineProps({
 const isHovered = ref(false)
 
 const handleClick = () => {
+  playButtonSound()
   props.action()
 }
 </script>
@@ -53,7 +55,7 @@ const handleClick = () => {
   height: auto;
   max-width: none;
   max-height: none;
-  transform: scale(0.3);
+  transform: scale(0.42);
   transform-origin: center center;
 }
 
@@ -64,7 +66,7 @@ const handleClick = () => {
   transform: translate(-50%, -50%);
   color: white;
   font-family: 'Firlest', Arial, sans-serif;
-  font-size: 18px;
+  font-size: 25px;
   font-weight: normal;
   letter-spacing: 2px;
   pointer-events: none;
