@@ -1,4 +1,7 @@
 <script setup>
+import LogoImage from '../assets/logo.webp'
+import CustomButton from './CustomButton.vue'
+
 const emit = defineEmits(['navigateToStore'])
 
 const goToStore = () => {
@@ -8,47 +11,45 @@ const goToStore = () => {
 
 <template>
   <div class="homepage">
-    <div class="hero">
-      <img src="../assets/logo.webp" /> 
-      <p class="hero-description">Homepage description text placeholder</p>
-      <button @click="goToStore" class="hero-button">Go to Store</button>
-    </div>
+    <img :src="LogoImage" alt="Logo" class="logo" />
+    <CustomButton 
+      text="Enter Store" 
+      :action="goToStore"
+      class="custom-button"
+    />
   </div>
 </template>
 
 <style scoped>
 .homepage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  width: 100%;
-}
-
-.hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/HomeView.webp');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  text-align: center;
-  max-width: 600px;
+  gap: 40px;
+  padding-top: 15vh;
 }
 
-.hero-title {
-  margin: 0 0 10px 0;
+.logo {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+  margin-top: -1svh;
 }
 
-.hero-subtitle {
-  margin: 0 0 20px 0;
+.custom-button {
+  margin-top: -8svh;
 }
 
-.hero-description {
-  margin: 0 0 30px 0;
-}
 
-.hero-button {
-  padding: 10px 20px;
-  border: 1px solid #ccc;
-  background: white;
-  cursor: pointer;
-}
 </style>
