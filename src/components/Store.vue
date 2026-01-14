@@ -3,6 +3,7 @@ import Parchment from '../assets/Parchment.webp'
 import FlameGif from '../assets/flame.gif'
 import ProductCard from './ProductCard.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
+import { playButtonSound } from '../composables/useSound.js'
 
 const emit = defineEmits(['viewDetails'])
 
@@ -49,6 +50,7 @@ const products = [
 ]
 
 const handleProductSelect = (product) => {
+  playButtonSound()
   emit('viewDetails', product)
 }
 
