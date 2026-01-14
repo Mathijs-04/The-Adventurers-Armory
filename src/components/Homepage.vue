@@ -7,45 +7,37 @@ import { ref, onMounted, onUnmounted } from 'vue'
 const emit = defineEmits(['navigateToStore'])
 
 const flamePositions = ref({
-  flame1: { top: '30%', left: '80.5%' },  // Current flame (right side)
-  flame2: { top: '30%', left: '94%' },    // Slightly more right (+1%)
-  flame3: { top: '30%', left: '19.5%' },  // Mirrored left side
-  flame4: { top: '30%', left: '6%' }      // Slightly more left (-1%)
+  flame1: { top: '30%', left: '80.5%' },
+  flame2: { top: '30%', left: '94%' },
+  flame3: { top: '30%', left: '19.5%' },
+  flame4: { top: '30%', left: '6%' }
 })
 
 const goToStore = () => {
   emit('navigateToStore')
 }
 
-// Configuration for different display modes
-// Adjust these values to perfectly align flames with torches
 const flameConfigs = {
-  // Default windowed mode
   windowed: {
-    flame1: { top: '30%', left: '80.5%' },  // Right flame
-    flame2: { top: '30%', left: '94%' },    // Slightly more right (+1%)
-    flame3: { top: '30%', left: '19.5%' },  // Mirror of flame1 on left
-    flame4: { top: '30%', left: '6%' }      // Slightly more left (-1%)
+    flame1: { top: '30%', left: '80.5%' },
+    flame2: { top: '30%', left: '94%' },
+    flame3: { top: '30%', left: '19.5%' },
+    flame4: { top: '30%', left: '6%' }
   },
-
-  // Fullscreen mode (may need slight adjustment)
   fullscreen: {
-    flame1: { top: '32.2%', left: '80.3%' },  // 2% lower
-    flame2: { top: '32.2%', left: '93.8%' },  // 2% lower
-    flame3: { top: '32.2%', left: '19.7%' },  // 2% lower
-    flame4: { top: '32.2%', left: '6.2%' }    // 2% lower
+    flame1: { top: '32.2%', left: '80.3%' },
+    flame2: { top: '32.2%', left: '93.8%' },
+    flame3: { top: '32.2%', left: '19.7%' },
+    flame4: { top: '32.2%', left: '6.2%' }
   },
-
-  // Laptop specific adjustments
   laptop: {
-    flame1: { top: '29.8%', left: '81.7%' },  // 1% more (away from center)
-    flame2: { top: '29.8%', left: '96.2%' },  // 1% less (toward center)
-    flame3: { top: '29.8%', left: '18.3%' },  // 1% more (away from center)
-    flame4: { top: '29.8%', left: '3.8%' }    // 1% less (toward center)
+    flame1: { top: '29.8%', left: '81.7%' },
+    flame2: { top: '29.8%', left: '96.2%' },
+    flame3: { top: '29.8%', left: '18.3%' },
+    flame4: { top: '29.8%', left: '3.8%' }
   }
 }
 
-// Function to detect current display mode and set appropriate flame positions
 const updateFlamePosition = () => {
   // Check if in fullscreen
   if (document.fullscreenElement) {

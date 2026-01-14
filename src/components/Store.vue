@@ -1,8 +1,30 @@
 <script setup>
 import Parchment from '../assets/Parchment.webp'
+import FlameGif from '../assets/flame.gif'
 import ProductCard from './ProductCard.vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
 const emit = defineEmits(['viewDetails'])
+
+const storeFlamePositions = ref({
+  flame1: { top: '16%', left: '88.0%' },
+  flame2: { top: '16%', left: '11.0%' }
+})
+
+const storeFlameConfigs = {
+  windowed: {
+    flame1: { top: '16%', left: '88.0%' },
+    flame2: { top: '16%', left: '11.0%' }
+  },
+  laptop: {
+    flame1: { top: '16%', left: '90.0%' },
+    flame2: { top: '16%', left: '9.0%' }
+  },
+  fullscreen: {
+    flame1: { top: '19%', left: '88.0%' },
+    flame2: { top: '19%', left: '11.0%' }
+  }
+}
 
 // Sample product data
 const products = [
@@ -29,10 +51,39 @@ const products = [
 const handleProductSelect = (product) => {
   emit('viewDetails', product)
 }
+
+const updateStoreFlamePosition = () => {
+  // Check if in fullscreen mode
+  if (document.fullscreenElement) {
+    storeFlamePositions.value = storeFlameConfigs.fullscreen
+  }
+  // Check for laptop screen size (≤1440px)
+  else if (window.innerWidth <= 1440) {
+    storeFlamePositions.value = storeFlameConfigs.laptop
+  }
+  // Default windowed mode for larger screens
+  else {
+    storeFlamePositions.value = storeFlameConfigs.windowed
+  }
+}
+
+onMounted(() => {
+  updateStoreFlamePosition()
+  document.addEventListener('fullscreenchange', updateStoreFlamePosition)
+  window.addEventListener('resize', updateStoreFlamePosition)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('fullscreenchange', updateStoreFlamePosition)
+  window.removeEventListener('resize', updateStoreFlamePosition)
+})
 </script>
 
 <template>
   <div class="store">
+    <img :src="FlameGif" alt="Store Flame 1" class="store-flame store-flame-1" />
+    <img :src="FlameGif" alt="Store Flame 2" class="store-flame store-flame-2" />
+
     <div class="parchment-banner">
       <img :src="Parchment" alt="Parchment" class="parchment-image" />
       <h1 class="banner-text">Featured Items</h1>
@@ -120,5 +171,38 @@ const handleProductSelect = (product) => {
   flex: 1;
   max-width: 450px;
   min-width: 300px;
+}
+
+/* Store flame styling */
+.store-flame {
+  position: absolute;
+  width: 100px;
+  height: 130px;
+  pointer-events: none;
+  z-index: 5;
+  transform: translate(-50%, -50%);
+}
+
+.store-flame-1 {
+  top: v-bind('storeFlamePositions.flame1.top');
+  left: v-bind('storeFlamePositions.flame1.left');
+}
+
+.store-flame-2 {
+  top: v-bind('storeFlamePositions.flame2.top');
+  left: v-bind('storeFlamePositions.flame2.left');
+}
+
+/* Hide store flames on small and large screens (same as homepage) */
+@media (max-width: 767px) {
+  .store-flame {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1921px) {
+  .store-flame {
+    display: none !important;
+  }
 }
 </style>
