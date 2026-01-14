@@ -130,6 +130,7 @@ onUnmounted(() => {
   position: relative;
 }
 
+
 .flame-gif {
   /* Easy size adjustments - change these values */
   width: 100px;   /* Flame width */

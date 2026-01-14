@@ -4,6 +4,7 @@ import Homepage from './components/Homepage.vue'
 import Store from './components/Store.vue'
 import Details from './components/Details.vue'
 import SoundToggle from './components/SoundToggle.vue'
+import LoadingScreen from './components/LoadingScreen.vue'
 import ArrowBack from './assets/ArrowBack.webp'
 import ArrowBackHover from './assets/ArrowBackHover.webp'
 import FullscreenNA from './assets/Fullscreen-NA.webp'
@@ -13,6 +14,7 @@ const currentView = ref('homepage')
 const selectedProduct = ref(null)
 const isArrowHovered = ref(false)
 const isFullscreenHovered = ref(false)
+const isLoading = ref(true)
 
 const navigateToStore = () => {
   currentView.value = 'store'
@@ -29,6 +31,10 @@ const navigateBack = () => {
 const viewDetails = (product) => {
   selectedProduct.value = product
   currentView.value = 'details'
+}
+
+const handleLoadingComplete = () => {
+  isLoading.value = false
 }
 
 // Toggle fullscreen mode
@@ -49,6 +55,10 @@ const toggleFullscreen = async () => {
 
 <template>
   <div id="app">
+    <LoadingScreen
+      v-if="isLoading"
+      @loading-complete="handleLoadingComplete"
+    />
     <button
       v-if="currentView !== 'homepage'"
       @click="navigateBack"
