@@ -75,7 +75,7 @@ const itemImagePath = computed(() => {
 }
 
 .product-card:hover .item-image {
-  transform: scale(1.1);
+  transform: scale(1.4);
 }
 
 .price-tag {
