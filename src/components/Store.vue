@@ -13,7 +13,7 @@
   width: 100vw;
   height: 100vh;
   background-image: url('../assets/StoreView.webp');
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;

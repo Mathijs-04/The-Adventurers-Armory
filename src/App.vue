@@ -6,10 +6,13 @@ import Details from './components/Details.vue'
 import SoundToggle from './components/SoundToggle.vue'
 import ArrowBack from './assets/ArrowBack.webp'
 import ArrowBackHover from './assets/ArrowBackHover.webp'
+import FullscreenNA from './assets/Fullscreen-NA.webp'
+import FullscreenA from './assets/Fullscreen-A.webp'
 
 const currentView = ref('homepage')
 const selectedProduct = ref(null)
 const isArrowHovered = ref(false)
+const isFullscreenHovered = ref(false)
 
 const navigateToStore = () => {
   currentView.value = 'store'
@@ -27,6 +30,21 @@ const viewDetails = (product) => {
   selectedProduct.value = product
   currentView.value = 'details'
 }
+
+// Toggle fullscreen mode
+const toggleFullscreen = async () => {
+  try {
+    if (!document.fullscreenElement) {
+      // Enter fullscreen
+      await document.documentElement.requestFullscreen()
+    } else {
+      // Exit fullscreen
+      await document.exitFullscreen()
+    }
+  } catch (error) {
+    console.warn('Fullscreen toggle failed:', error)
+  }
+}
 </script>
 
 <template>
@@ -42,6 +60,18 @@ const viewDetails = (product) => {
         :src="isArrowHovered ? ArrowBackHover : ArrowBack"
         alt="Back"
         class="back-arrow"
+      />
+    </button>
+    <button
+      @click="toggleFullscreen"
+      @mouseenter="isFullscreenHovered = true"
+      @mouseleave="isFullscreenHovered = false"
+      class="fullscreen-toggle"
+    >
+      <img
+        :src="isFullscreenHovered ? FullscreenA : FullscreenNA"
+        alt="Fullscreen Toggle"
+        class="fullscreen-icon"
       />
     </button>
     <SoundToggle />
@@ -80,6 +110,30 @@ const viewDetails = (product) => {
   border-radius: 50%;
   z-index: 1000;
   transition: background-color 0.2s ease;
+}
+
+.fullscreen-toggle {
+  position: fixed;
+  top: 27px;
+  right: 100px;
+  background-color: transparent;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  z-index: 1000;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.fullscreen-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.fullscreen-icon {
+  width: 58px;
+  height: 58px;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 
