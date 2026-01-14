@@ -1,6 +1,7 @@
 <script setup>
 import ProductCardDefault from '../assets/ProductCard.webp'
 import ProductCardHover from '../assets/ProductCardHover.webp'
+import GoldIcon from '../assets/Gold.webp'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -31,17 +32,61 @@ const handleClick = () => {
       alt="Product Card"
       class="card-image"
     />
+    <div class="price-tag">
+      <span class="price-number">{{ product.price }}</span>
+      <img :src="GoldIcon" alt="Gold" class="gold-icon" />
+    </div>
   </div>
 </template>
 
 <style scoped>
 .product-card {
   cursor: pointer;
+  position: relative;
 }
 
 .card-image {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.price-tag {
+  position: absolute;
+  bottom: 21%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  z-index: 10;
+}
+
+.price-number {
+  color: white;
+  font-family: 'Firlest', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  margin-bottom: -3px;
+  text-shadow:
+    -1px -1px 0 #8B4513,
+    1px -1px 0 #8B4513,
+    -1px 1px 0 #8B4513,
+    1px 1px 0 #8B4513,
+    -1px -1px 0 #654321,
+    1px -1px 0 #654321,
+    -1px 1px 0 #654321,
+    1px 1px 0 #654321,
+    0 0 2px rgba(139, 69, 19, 0.8),
+    0 0 4px rgba(139, 69, 19, 0.6);
+}
+
+.gold-icon {
+  width: 25px;
+  height: 25px;
+  display: block;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
+  margin-bottom: -4.5px;
 }
 </style>

@@ -33,19 +33,19 @@ const products = [
     id: 1,
     name: 'Enchanted Sword',
     description: 'A legendary blade forged in dragonfire, imbued with ancient magic that never dulls.',
-    price: '500 Gold Coins'
+    price: 1250
   },
   {
     id: 2,
     name: 'Mystic Potion',
     description: 'An elixir of rejuvenation that restores vitality and grants temporary invulnerability.',
-    price: '200 Gold Coins'
+    price: 450
   },
   {
     id: 3,
     name: 'Wizard\'s Tome',
     description: 'An ancient spellbook containing forbidden knowledge and powerful incantations.',
-    price: '750 Gold Coins'
+    price: 3200
   }
 ]
 
@@ -158,11 +158,11 @@ onUnmounted(() => {
 
 .products-grid {
   position: absolute;
-  top: 55vh;
+  top: 50vh;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 6vw;
+  gap: 3vw;
   justify-content: center;
   align-items: center;
   z-index: 15;
@@ -171,8 +171,8 @@ onUnmounted(() => {
 
 .products-grid :deep(.product-card) {
   flex: 1;
-  max-width: 450px;
-  min-width: 300px;
+  max-width: 585px; /* 450px * 1.3 = 585px (30% bigger) */
+  min-width: 390px; /* 300px * 1.3 = 390px (30% bigger) */
 }
 
 /* Store flame styling */
