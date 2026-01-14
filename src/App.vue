@@ -81,13 +81,11 @@ const toggleFullscreen = async () => {
     />
     <Store
       v-if="currentView === 'store'"
+      @view-details="viewDetails"
     />
     <Details
       v-if="currentView === 'details' && selectedProduct"
-      :name="selectedProduct.name"
-      :description="selectedProduct.description"
-      :price="selectedProduct.price"
-      :image="selectedProduct.image"
+      :product="selectedProduct"
     />
   </div>
 </template>

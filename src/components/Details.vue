@@ -1,26 +1,20 @@
 <script setup>
+import ProductCard from './ProductCard.vue'
+
 const props = defineProps({
-  name: {
-    type: String,
-    default: 'Product'
-  },
-  description: {
-    type: String,
-    default: 'Description placeholder text'
-  },
-  price: {
-    type: Number,
-    default: 100
-  },
-  image: {
-    type: String,
-    default: ''
+  product: {
+    type: Object,
+    required: true
   }
 })
 </script>
 
 <template>
-  <div class="details"></div>
+  <div class="details">
+    <div class="product-detail">
+      <ProductCard :product="product" />
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -31,9 +25,18 @@ const props = defineProps({
   width: 100vw;
   height: 100vh;
   background-image: url('../assets/DetailView.webp');
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-detail {
+  max-width: 400px;
+  width: 100%;
+  z-index: 10;
 }
 </style>
