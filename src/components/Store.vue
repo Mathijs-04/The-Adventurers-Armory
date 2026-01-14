@@ -27,27 +27,64 @@ const storeFlameConfigs = {
   }
 }
 
-// Sample product data
-const products = [
+// Available item images
+const itemImages = [
+  'Item1.png',
+  'Item2.png',
+  'Item3.png',
+  'Item4.png',
+  'Item5.png',
+  'Item6.png'
+]
+
+// Item data with names, descriptions, and prices
+const itemData = [
   {
-    id: 1,
     name: 'Enchanted Sword',
     description: 'A legendary blade forged in dragonfire, imbued with ancient magic that never dulls.',
     price: 1250
   },
   {
-    id: 2,
     name: 'Mystic Potion',
     description: 'An elixir of rejuvenation that restores vitality and grants temporary invulnerability.',
     price: 450
   },
   {
-    id: 3,
     name: 'Wizard\'s Tome',
     description: 'An ancient spellbook containing forbidden knowledge and powerful incantations.',
     price: 3200
+  },
+  {
+    name: 'Dragon Scale Armor',
+    description: 'Impenetrable armor forged from the scales of an ancient dragon, offering ultimate protection.',
+    price: 2800
+  },
+  {
+    name: 'Phoenix Feather Wand',
+    description: 'A wand crafted from the feather of a phoenix, channeling fire and rebirth magic.',
+    price: 1950
+  },
+  {
+    name: 'Crystal Ball of Foresight',
+    description: 'A mystical orb that reveals glimpses of future events and hidden truths.',
+    price: 3400
   }
 ]
+
+// Function to get 3 random items
+const getRandomItems = () => {
+  const shuffled = [...itemImages].sort(() => 0.5 - Math.random())
+  const selectedImages = shuffled.slice(0, 3)
+
+  return selectedImages.map((image, index) => ({
+    id: index + 1,
+    image: image,
+    ...itemData.find((_, dataIndex) => dataIndex === itemImages.indexOf(image))
+  }))
+}
+
+// Sample product data - randomly selected each load
+const products = ref(getRandomItems())
 
 const handleProductSelect = (product) => {
   playButtonSound()

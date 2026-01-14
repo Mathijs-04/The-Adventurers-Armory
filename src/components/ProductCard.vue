@@ -2,7 +2,7 @@
 import ProductCardDefault from '../assets/ProductCard.webp'
 import ProductCardHover from '../assets/ProductCardHover.webp'
 import GoldIcon from '../assets/Gold.webp'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const props = defineProps({
   product: {
@@ -18,6 +18,11 @@ const isHovered = ref(false)
 const handleClick = () => {
   emit('selectProduct', props.product)
 }
+
+// Computed property for the item image path
+const itemImagePath = computed(() => {
+  return new URL(`../assets/Items/${props.product.image}`, import.meta.url).href
+})
 </script>
 
 <template>
@@ -31,6 +36,11 @@ const handleClick = () => {
       :src="isHovered ? ProductCardHover : ProductCardDefault"
       alt="Product Card"
       class="card-image"
+    />
+    <img
+      :src="itemImagePath"
+      alt="Item"
+      class="item-image"
     />
     <div class="price-tag">
       <span class="price-number">{{ product.price }}</span>
@@ -49,6 +59,23 @@ const handleClick = () => {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.item-image {
+  position: absolute;
+  top: 22%;
+  left: 20.5%;
+  width: 59%;
+  height: 46%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 2;
+  transform: scale(1);
+  transition: transform 0.25s ease-in-out;
+}
+
+.product-card:hover .item-image {
+  transform: scale(1.1);
 }
 
 .price-tag {
