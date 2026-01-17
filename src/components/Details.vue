@@ -1,6 +1,7 @@
 <script setup>
 import ProductCard from './ProductCard.vue'
 import FlameGif from '../assets/flame.gif'
+import DetailBackground from '../assets/DetailBackground.webp'
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
@@ -62,7 +63,14 @@ onUnmounted(() => {
     <img :src="FlameGif" alt="Detail Flame 1" class="detail-flame detail-flame-1" />
     <img :src="FlameGif" alt="Detail Flame 2" class="detail-flame detail-flame-2" />
     <div class="product-detail">
-      <ProductCard :product="product" />
+      <ProductCard :product="product" :disable-hover="true" />
+      <div class="product-info">
+        <img :src="DetailBackground" alt="Detail Background" class="detail-background-image" />
+        <div class="text-overlay">
+          <h1 class="product-title">{{ product.name }}</h1>
+          <p class="product-description">{{ product.description }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -88,6 +96,76 @@ onUnmounted(() => {
   max-width: 400px;
   width: 100%;
   z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.product-info {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.detail-background-image {
+  width: 100%;
+  height: auto;
+  transform: scale(1.3);
+  transform-origin: center;
+  display: block;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 20px;
+  z-index: 2;
+}
+
+.product-title {
+  font-family: 'Firlest', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 100;
+  color: white;
+  margin: 0 0 15px 0;
+  letter-spacing: 2px;
+  text-shadow:
+    -1px -1px 0 #8B4513,
+    1px -1px 0 #8B4513,
+    -1px 1px 0 #8B4513,
+    1px 1px 0 #8B4513,
+    -1px -1px 0 #654321,
+    1px -1px 0 #654321,
+    -1px 1px 0 #654321,
+    1px 1px 0 #654321,
+    0 0 2px rgba(139, 69, 19, 0.8),
+    0 0 4px rgba(139, 69, 19, 0.6);
+}
+
+.product-description {
+  font-family: 'Firlest', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  color: white;
+  margin: 0;
+  line-height: 1.4;
+  letter-spacing: 2px;
+  text-shadow:
+    -1px -1px 0 #8B4513,
+    1px -1px 0 #8B4513,
+    -1px 1px 0 #8B4513,
+    1px 1px 0 #8B4513,
+    -1px -1px 0 #654321,
+    1px -1px 0 #654321,
+    -1px 1px 0 #654321,
+    1px 1px 0 #654321,
+    0 0 2px rgba(139, 69, 19, 0.8),
+    0 0 4px rgba(139, 69, 19, 0.6);
 }
 
 /* Detail flame styling */

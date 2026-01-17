@@ -8,6 +8,10 @@ const props = defineProps({
   product: {
     type: Object,
     required: true
+  },
+  disableHover: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -28,9 +32,10 @@ const itemImagePath = computed(() => {
 <template>
   <div
     class="product-card"
+    :class="{ 'disable-hover': disableHover }"
     @click="handleClick"
-    @mouseenter="isHovered = true"
-    @mouseleave="isHovered = false"
+    @mouseenter="!disableHover && (isHovered = true)"
+    @mouseleave="!disableHover && (isHovered = false)"
   >
     <img
       :src="isHovered ? ProductCardHover : ProductCardDefault"
@@ -74,7 +79,7 @@ const itemImagePath = computed(() => {
   transition: transform 0.25s ease-in-out;
 }
 
-.product-card:hover .item-image {
+.product-card:not(.disable-hover):hover .item-image {
   transform: scale(1.2);
 }
 

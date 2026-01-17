@@ -1,8 +1,10 @@
 <script setup>
 import Parchment from '../assets/Parchment.webp'
 import FlameGif from '../assets/flame.gif'
+import ArrowNormal from '../assets/Arrow-NA.webp'
+import ArrowActive from '../assets/Arrow-A.webp'
 import ProductCard from './ProductCard.vue'
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { playButtonSound } from '../composables/useSound.js'
 
 const emit = defineEmits(['viewDetails'])
@@ -68,195 +70,241 @@ const itemImages = [
 // Item data with names, descriptions, and prices
 const itemData = [
   {
-    name: 'Enchanted Sword',
-    description: 'A legendary blade forged in dragonfire, imbued with ancient magic that never dulls.',
+    name: 'Placeholder Title Item 1',
+    description: 'This text is the placeholder description for item 1',
     price: 1250
   },
   {
-    name: 'Mystic Potion',
-    description: 'An elixir of rejuvenation that restores vitality and grants temporary invulnerability.',
+    name: 'Placeholder Title Item 2',
+    description: 'This text is the placeholder description for item 2',
     price: 450
   },
   {
-    name: 'Wizard\'s Tome',
-    description: 'An ancient spellbook containing forbidden knowledge and powerful incantations.',
+    name: 'Placeholder Title Item 3',
+    description: 'This text is the placeholder description for item 3',
     price: 3200
   },
   {
-    name: 'Dragon Scale Armor',
-    description: 'Impenetrable armor forged from the scales of an ancient dragon, offering ultimate protection.',
+    name: 'Placeholder Title Item 4',
+    description: 'This text is the placeholder description for item 4',
     price: 2800
   },
   {
-    name: 'Phoenix Feather Wand',
-    description: 'A wand crafted from the feather of a phoenix, channeling fire and rebirth magic.',
+    name: 'Placeholder Title Item 5',
+    description: 'This text is the placeholder description for item 5',
     price: 1950
   },
   {
-    name: 'Crystal Ball of Foresight',
-    description: 'A mystical orb that reveals glimpses of future events and hidden truths.',
+    name: 'Placeholder Title Item 6',
+    description: 'This text is the placeholder description for item 6',
     price: 3400
   },
   {
-    name: 'Shadow Cloak',
-    description: 'A cloak woven from darkness itself, granting invisibility and protection from light-based attacks.',
+    name: 'Placeholder Title Item 7',
+    description: 'This text is the placeholder description for item 7',
     price: 1800
   },
   {
-    name: 'Elven Bow',
-    description: 'A finely crafted bow from ancient elven woods, never misses its mark when drawn with pure intent.',
+    name: 'Placeholder Title Item 8',
+    description: 'This text is the placeholder description for item 8',
     price: 950
   },
   {
-    name: 'Dwarven Hammer',
-    description: 'Forged in the deepest mountains, this hammer can shape any metal and shatter any stone.',
+    name: 'Placeholder Title Item 9',
+    description: 'This text is the placeholder description for item 9',
     price: 1100
   },
   {
-    name: 'Healing Crystal',
-    description: 'A radiant crystal that mends wounds and cures ailments with a single touch.',
+    name: 'Placeholder Title Item 10',
+    description: 'This text is the placeholder description for item 10',
     price: 650
   },
   {
-    name: 'Frost Gauntlets',
-    description: 'Gloves imbued with eternal winter, freezing enemies and creating ice barriers.',
+    name: 'Placeholder Title Item 11',
+    description: 'This text is the placeholder description for item 11',
     price: 1350
   },
   {
-    name: 'Lightning Rod',
-    description: 'A staff that channels thunderbolts, striking multiple foes with devastating electrical energy.',
+    name: 'Placeholder Title Item 12',
+    description: 'This text is the placeholder description for item 12',
     price: 2200
   },
   {
-    name: 'Poison Dagger',
-    description: 'A blade coated in deadly venom that weakens enemies with every strike.',
+    name: 'Placeholder Title Item 13',
+    description: 'This text is the placeholder description for item 13',
     price: 750
   },
   {
-    name: 'Mirror Shield',
-    description: 'A shield that reflects spells and illusions back at their casters.',
+    name: 'Placeholder Title Item 14',
+    description: 'This text is the placeholder description for item 14',
     price: 1650
   },
   {
-    name: 'Timekeeper Amulet',
-    description: 'A pendant that allows brief glimpses into possible futures, aiding in decision-making.',
+    name: 'Placeholder Title Item 15',
+    description: 'This text is the placeholder description for item 15',
     price: 2900
   },
   {
-    name: 'Fire Ruby Ring',
-    description: 'A ring pulsing with inner flame, protecting the wearer from cold and granting fire resistance.',
+    name: 'Placeholder Title Item 16',
+    description: 'This text is the placeholder description for item 16',
     price: 1400
   },
   {
-    name: 'Wind Walker Boots',
-    description: 'Boots that allow the wearer to walk on air and move with incredible speed.',
+    name: 'Placeholder Title Item 17',
+    description: 'This text is the placeholder description for item 17',
     price: 1700
   },
   {
-    name: 'Mind Stone',
-    description: 'A gem that enhances mental abilities, allowing telepathy and mind control over weak-willed creatures.',
+    name: 'Placeholder Title Item 18',
+    description: 'This text is the placeholder description for item 18',
     price: 2500
   },
   {
-    name: 'Soul Reaper Scythe',
-    description: 'A spectral weapon that harvests the life force of enemies, growing stronger with each kill.',
+    name: 'Placeholder Title Item 19',
+    description: 'This text is the placeholder description for item 19',
     price: 3100
   },
   {
-    name: 'Earth Titan Gauntlet',
-    description: 'A massive glove that summons stone golems and controls the very earth beneath your feet.',
+    name: 'Placeholder Title Item 20',
+    description: 'This text is the placeholder description for item 20',
     price: 2750
   },
   {
-    name: 'Water Spirit Orb',
-    description: 'A floating sphere that controls water, creating waves, healing springs, and drowning mists.',
+    name: 'Placeholder Title Item 21',
+    description: 'This text is the placeholder description for item 21',
     price: 1850
   },
   {
-    name: 'Blood Thorn Vine',
-    description: 'A living plant weapon that drains the life from enemies and heals its wielder.',
+    name: 'Placeholder Title Item 22',
+    description: 'This text is the placeholder description for item 22',
     price: 1200
   },
   {
-    name: 'Void Crystal',
-    description: 'A dark gem that opens portals to other realms and banishes creatures to the void.',
+    name: 'Placeholder Title Item 23',
+    description: 'This text is the placeholder description for item 23',
     price: 3600
   },
   {
-    name: 'Sunflare Crown',
-    description: 'A crown that radiates holy light, blinding undead and healing allies in its glow.',
+    name: 'Placeholder Title Item 24',
+    description: 'This text is the placeholder description for item 24',
     price: 2400
   },
   {
-    name: 'Moonshadow Mask',
-    description: 'A mask that enhances night vision and allows transformation into various creatures.',
+    name: 'Placeholder Title Item 25',
+    description: 'This text is the placeholder description for item 25',
     price: 2100
   },
   {
-    name: 'Stormcaller Horn',
-    description: 'A horn that summons tempests and lightning storms to devastate battlefields.',
+    name: 'Placeholder Title Item 26',
+    description: 'This text is the placeholder description for item 26',
     price: 1950
   },
   {
-    name: 'Lifebloom Seed',
-    description: 'A magical seed that grows into a tree of eternal life, healing all who rest beneath it.',
+    name: 'Placeholder Title Item 27',
+    description: 'This text is the placeholder description for item 27',
     price: 800
   },
   {
-    name: 'Death Knight Helm',
-    description: 'An intimidating helmet that strikes fear into enemies and commands undead armies.',
+    name: 'Placeholder Title Item 28',
+    description: 'This text is the placeholder description for item 28',
     price: 2300
   },
   {
-    name: 'Arcane Focus',
-    description: 'A floating orb that amplifies magical power and stores excess mana for later use.',
+    name: 'Placeholder Title Item 29',
+    description: 'This text is the placeholder description for item 29',
     price: 1600
   },
   {
-    name: 'Beastmaster Whistle',
-    description: 'A whistle that can tame wild creatures and command them in battle.',
+    name: 'Placeholder Title Item 30',
+    description: 'This text is the placeholder description for item 30',
     price: 900
   },
   {
-    name: 'Gravity Boots',
-    description: 'Boots that manipulate gravitational forces, allowing impossible jumps and crushing strikes.',
+    name: 'Placeholder Title Item 31',
+    description: 'This text is the placeholder description for item 31',
     price: 1900
   },
   {
-    name: 'Dreamweaver Pillow',
-    description: 'A pillow that allows entry into dream realms, where thoughts become reality.',
+    name: 'Placeholder Title Item 32',
+    description: 'This text is the placeholder description for item 32',
     price: 1450
   },
   {
-    name: 'Chaos Dice',
-    description: 'Magical dice that can alter probability and create random magical effects.',
+    name: 'Placeholder Title Item 33',
+    description: 'This text is the placeholder description for item 33',
     price: 1150
   },
   {
-    name: 'Harmony Harp',
-    description: 'An instrument whose music calms beasts, heals wounds, and brings peace to troubled lands.',
+    name: 'Placeholder Title Item 34',
+    description: 'This text is the placeholder description for item 34',
     price: 1300
   }
 ]
 
-// Function to get 3 random items
-const getRandomItems = () => {
-  const shuffled = [...itemImages].sort(() => 0.5 - Math.random())
-  const selectedImages = shuffled.slice(0, 3)
+// Function to get or create session-persistent random sequence
+const getSessionSequence = () => {
+  const sessionKey = 'fantasy-shop-sequence'
 
-  return selectedImages.map((image, index) => ({
+  // Check if we already have a sequence for this session
+  let storedSequence = sessionStorage.getItem(sessionKey)
+  if (storedSequence) {
+    return JSON.parse(storedSequence)
+  }
+
+  // Create new shuffled sequence of all items
+  const shuffled = [...itemImages].sort(() => 0.5 - Math.random())
+
+  // Create full product sequence
+  const sequence = shuffled.map((image, index) => ({
     id: index + 1,
     image: image,
     ...itemData.find((_, dataIndex) => dataIndex === itemImages.indexOf(image))
   }))
+
+  // Store in sessionStorage for persistence
+  sessionStorage.setItem(sessionKey, JSON.stringify(sequence))
+  return sequence
 }
 
-// Sample product data - randomly selected each load
-const products = ref(getRandomItems())
+// Full product sequence - persists across session
+const fullSequence = ref(getSessionSequence())
+
+// Current index for navigation (starts at 0)
+const currentIndex = ref(0)
+
+// Computed property for visible products (3 items starting from current index)
+const products = computed(() => {
+  const start = currentIndex.value
+  const end = Math.min(start + 3, fullSequence.value.length)
+  return fullSequence.value.slice(start, end)
+})
+
+// Arrow hover states
+const leftArrowHovered = ref(false)
+const rightArrowHovered = ref(false)
 
 const handleProductSelect = (product) => {
   playButtonSound()
   emit('viewDetails', product)
+}
+
+// Navigation functions with looping
+const navigateLeft = () => {
+  if (currentIndex.value > 0) {
+    currentIndex.value -= 1
+  } else {
+    // Loop to the end (showing last 3 items)
+    currentIndex.value = fullSequence.value.length - 3
+  }
+}
+
+const navigateRight = () => {
+  if (currentIndex.value < fullSequence.value.length - 3) {
+    currentIndex.value += 1
+  } else {
+    // Loop back to the beginning
+    currentIndex.value = 0
+  }
 }
 
 const updateStoreFlamePosition = () => {
@@ -296,6 +344,20 @@ onUnmounted(() => {
       <h1 class="banner-text">Featured Items</h1>
     </div>
 
+    <!-- Left Navigation Arrow -->
+    <button
+      class="nav-arrow nav-arrow-left"
+      @click="navigateLeft"
+      @mouseenter="leftArrowHovered = true"
+      @mouseleave="leftArrowHovered = false"
+    >
+      <img
+        :src="leftArrowHovered ? ArrowActive : ArrowNormal"
+        alt="Previous items"
+        class="arrow-image arrow-left"
+      />
+    </button>
+
     <div class="products-grid">
       <ProductCard
         v-for="product in products"
@@ -304,6 +366,20 @@ onUnmounted(() => {
         @select-product="handleProductSelect"
       />
     </div>
+
+    <!-- Right Navigation Arrow -->
+    <button
+      class="nav-arrow nav-arrow-right"
+      @click="navigateRight"
+      @mouseenter="rightArrowHovered = true"
+      @mouseleave="rightArrowHovered = false"
+    >
+      <img
+        :src="rightArrowHovered ? ArrowActive : ArrowNormal"
+        alt="Next items"
+        class="arrow-image arrow-right"
+      />
+    </button>
   </div>
 </template>
 
@@ -378,6 +454,47 @@ onUnmounted(() => {
   flex: 1;
   max-width: 585px; /* 450px * 1.3 = 585px (30% bigger) */
   min-width: 390px; /* 300px * 1.3 = 390px (30% bigger) */
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+  position: absolute;
+  top: 68vh;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 15;
+  transition: opacity 0.2s ease;
+  padding: 15px;
+}
+
+.nav-arrow:hover {
+  opacity: 0.8;
+}
+
+.nav-arrow-left {
+  left: 13vw;
+}
+
+.nav-arrow-right {
+  right: 13vw;
+}
+
+.arrow-image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  transition: filter 0.2s ease;
+}
+
+.arrow-left {
+  transform: scaleX(-1); /* Flip horizontally for left arrow */
+}
+
+.nav-arrow:hover .arrow-image {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
 }
 
 /* Store flame styling */
