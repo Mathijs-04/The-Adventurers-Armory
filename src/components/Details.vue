@@ -2,59 +2,12 @@
 import ProductCard from './ProductCard.vue'
 import FlameGif from '../assets/flame.gif'
 import DetailBackground from '../assets/DetailBackground.webp'
-import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
   product: {
     type: Object,
     required: true
   }
-})
-
-const detailFlamePositions = ref({
-  flame1: { top: '35.25%', left: '91.75%' },
-  flame2: { top: '35.25%', left: '8.5%' }
-})
-
-const detailFlameConfigs = {
-  windowed: {
-    flame1: { top: '35.25%', left: '91.75%' },
-    flame2: { top: '35.25%', left: '8.5%' }
-  },
-  fullscreen: {
-    flame1: { top: '37.25%', left: '91.75%' },
-    flame2: { top: '37.25%', left: '8.5%' }
-  },
-  laptop: {
-    flame1: { top: '35.25%', left: '93.75%' },
-    flame2: { top: '35.25%', left: '6.5%' }
-  }
-}
-
-const updateDetailFlamePosition = () => {
-  // Check if in fullscreen mode
-  if (document.fullscreenElement) {
-    detailFlamePositions.value = detailFlameConfigs.fullscreen
-  }
-  // Check for laptop screen size (≤1440px)
-  else if (window.innerWidth <= 1440) {
-    detailFlamePositions.value = detailFlameConfigs.laptop
-  }
-  // Default windowed mode
-  else {
-    detailFlamePositions.value = detailFlameConfigs.windowed
-  }
-}
-
-onMounted(() => {
-  updateDetailFlamePosition()
-  document.addEventListener('fullscreenchange', updateDetailFlamePosition)
-  window.addEventListener('resize', updateDetailFlamePosition)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('fullscreenchange', updateDetailFlamePosition)
-  window.removeEventListener('resize', updateDetailFlamePosition)
 })
 </script>
 
@@ -76,12 +29,13 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* Fixed canvas coordinate system: 1920x1080px */
 .details {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 1920px;
+  height: 1080px;
   background-image: url('../assets/DetailView.webp');
   background-size: cover;
   background-position: center;
@@ -168,7 +122,7 @@ onUnmounted(() => {
     0 0 4px rgba(139, 69, 19, 0.6);
 }
 
-/* Detail flame styling */
+/* Detail flame styling - fixed pixel positions for 1920x1080 canvas */
 .detail-flame {
   position: absolute;
   width: 100px;
@@ -179,25 +133,12 @@ onUnmounted(() => {
 }
 
 .detail-flame-1 {
-  top: v-bind('detailFlamePositions.flame1.top');
-  left: v-bind('detailFlamePositions.flame1.left');
+  top: 381px;
+  left: 1762px;
 }
 
 .detail-flame-2 {
-  top: v-bind('detailFlamePositions.flame2.top');
-  left: v-bind('detailFlamePositions.flame2.left');
-}
-
-/* Hide detail flames on small and large screens */
-@media (max-width: 767px) {
-  .detail-flame {
-    display: none !important;
-  }
-}
-
-@media (min-width: 1921px) {
-  .detail-flame {
-    display: none !important;
-  }
+  top: 381px;
+  left: 163px;
 }
 </style>

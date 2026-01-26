@@ -4,30 +4,10 @@ import FlameGif from '../assets/flame.gif'
 import ArrowNormal from '../assets/Arrow-NA.webp'
 import ArrowActive from '../assets/Arrow-A.webp'
 import ProductCard from './ProductCard.vue'
-import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { ref, computed } from 'vue'
 import { playButtonSound } from '../composables/useSound.js'
 
 const emit = defineEmits(['viewDetails'])
-
-const storeFlamePositions = ref({
-  flame1: { top: '16%', left: '88.0%' },
-  flame2: { top: '16%', left: '11.0%' }
-})
-
-const storeFlameConfigs = {
-  windowed: {
-    flame1: { top: '16%', left: '88.0%' },
-    flame2: { top: '16%', left: '11.0%' }
-  },
-  laptop: {
-    flame1: { top: '16%', left: '90.0%' },
-    flame2: { top: '16%', left: '9.0%' }
-  },
-  fullscreen: {
-    flame1: { top: '19%', left: '88.0%' },
-    flame2: { top: '19%', left: '11.0%' }
-  }
-}
 
 // Available item images
 const itemImages = [
@@ -306,32 +286,6 @@ const navigateRight = () => {
     currentIndex.value = 0
   }
 }
-
-const updateStoreFlamePosition = () => {
-  // Check if in fullscreen mode
-  if (document.fullscreenElement) {
-    storeFlamePositions.value = storeFlameConfigs.fullscreen
-  }
-  // Check for laptop screen size (≤1440px)
-  else if (window.innerWidth <= 1440) {
-    storeFlamePositions.value = storeFlameConfigs.laptop
-  }
-  // Default windowed mode for larger screens
-  else {
-    storeFlamePositions.value = storeFlameConfigs.windowed
-  }
-}
-
-onMounted(() => {
-  updateStoreFlamePosition()
-  document.addEventListener('fullscreenchange', updateStoreFlamePosition)
-  window.addEventListener('resize', updateStoreFlamePosition)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('fullscreenchange', updateStoreFlamePosition)
-  window.removeEventListener('resize', updateStoreFlamePosition)
-})
 </script>
 
 <template>
@@ -384,12 +338,13 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+/* Fixed canvas coordinate system: 1920x1080px */
 .store {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 1920px;
+  height: 1080px;
   background-image: url('../assets/StoreView.webp');
   background-size: cover;
   background-position: center;
@@ -406,12 +361,12 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  margin-top: -12svh;
+  margin-top: -130px;
 }
 
 .parchment-image {
-  max-width: 48vw;
-  max-height: 36vh;
+  max-width: 920px;
+  max-height: 390px;
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
 }
@@ -426,7 +381,7 @@ onUnmounted(() => {
   background-clip: text;
   -webkit-background-clip: text;
   font-family: 'Firlest', Arial, sans-serif;
-  font-size: clamp(1.2rem, 3vw, 2.4rem);
+  font-size: 46px;
   font-weight: normal;
   letter-spacing: 3px;
   text-align: center;
@@ -439,27 +394,27 @@ onUnmounted(() => {
 
 .products-grid {
   position: absolute;
-  top: 50vh;
+  top: 540px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 3vw;
+  gap: 58px;
   justify-content: center;
   align-items: center;
   z-index: 15;
-  max-width: 95vw;
+  max-width: 1824px;
 }
 
 .products-grid :deep(.product-card) {
   flex: 1;
-  max-width: 585px; /* 450px * 1.3 = 585px (30% bigger) */
-  min-width: 390px; /* 300px * 1.3 = 390px (30% bigger) */
+  max-width: 585px;
+  min-width: 390px;
 }
 
 /* Navigation Arrows */
 .nav-arrow {
   position: absolute;
-  top: 68vh;
+  top: 734px;
   transform: translateY(-50%);
   background: none;
   border: none;
@@ -474,11 +429,11 @@ onUnmounted(() => {
 }
 
 .nav-arrow-left {
-  left: 13vw;
+  left: 250px;
 }
 
 .nav-arrow-right {
-  right: 13vw;
+  right: 250px;
 }
 
 .arrow-image {
@@ -497,7 +452,7 @@ onUnmounted(() => {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
 }
 
-/* Store flame styling */
+/* Store flame styling - fixed pixel positions for 1920x1080 canvas */
 .store-flame {
   position: absolute;
   width: 100px;
@@ -508,25 +463,12 @@ onUnmounted(() => {
 }
 
 .store-flame-1 {
-  top: v-bind('storeFlamePositions.flame1.top');
-  left: v-bind('storeFlamePositions.flame1.left');
+  top: 173px;
+  left: 1690px;
 }
 
 .store-flame-2 {
-  top: v-bind('storeFlamePositions.flame2.top');
-  left: v-bind('storeFlamePositions.flame2.left');
-}
-
-/* Hide store flames on small and large screens (same as homepage) */
-@media (max-width: 767px) {
-  .store-flame {
-    display: none !important;
-  }
-}
-
-@media (min-width: 1921px) {
-  .store-flame {
-    display: none !important;
-  }
+  top: 173px;
+  left: 211px;
 }
 </style>

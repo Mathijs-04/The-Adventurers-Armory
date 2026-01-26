@@ -107,12 +107,13 @@ onMounted(() => {
 </template>
 
 <style scoped>
+/* Fixed canvas coordinate system: 1920x1080px */
 .loading-screen {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 1920px;
+  height: 1080px;
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -125,13 +126,13 @@ onMounted(() => {
 .loading-content {
   text-align: center;
   max-width: 400px;
-  padding: 2rem;
+  padding: 32px;
 }
 
 .loading-logo {
   width: 350px;
   height: auto;
-  margin-bottom: 0.2rem;
+  margin-bottom: 3px;
 }
 
 .loading-bar-container {
