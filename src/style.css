@@ -20,11 +20,14 @@ html, body {
   font-family: 'Firlest', Arial, sans-serif;
 }
 
-/* Viewport container - fills the screen with white border/frame */
+/* Viewport container - fills the screen with background image */
 #viewport-container {
   width: 100vw;
   height: 100vh;
-  background: white;
+  background-image: url('./assets/background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
