@@ -222,6 +222,7 @@ const itemData = [
 ]
 
 // Function to get or create session-persistent random sequence
+// Get or create sequence from sessionStorage
 const getSessionSequence = () => {
   const sessionKey = 'fantasy-shop-sequence'
 
@@ -231,8 +232,8 @@ const getSessionSequence = () => {
     return JSON.parse(storedSequence)
   }
 
-  // Create new shuffled sequence of all items
-  const shuffled = [...itemImages].sort(() => 0.5 - Math.random())
+  // Create new shuffled sequence of all items (only on first load/reload)
+  const shuffled = [...itemImages].sort(() => Math.random() - 0.5)
 
   // Create full product sequence
   const sequence = shuffled.map((image, index) => ({
@@ -241,16 +242,29 @@ const getSessionSequence = () => {
     ...itemData.find((_, dataIndex) => dataIndex === itemImages.indexOf(image))
   }))
 
-  // Store in sessionStorage for persistence
+  // Store in sessionStorage for persistence during navigation
   sessionStorage.setItem(sessionKey, JSON.stringify(sequence))
   return sequence
 }
 
-// Full product sequence - persists across session
+// Get or create navigation position from sessionStorage
+const getSessionIndex = () => {
+  const indexKey = 'fantasy-shop-index'
+  let storedIndex = sessionStorage.getItem(indexKey)
+  return storedIndex ? parseInt(storedIndex, 10) : 0
+}
+
+// Save navigation position to sessionStorage
+const saveSessionIndex = (index) => {
+  const indexKey = 'fantasy-shop-index'
+  sessionStorage.setItem(indexKey, index.toString())
+}
+
+// Full product sequence - persists across navigation within session
 const fullSequence = ref(getSessionSequence())
 
-// Current index for navigation (starts at 0)
-const currentIndex = ref(0)
+// Current index for navigation - restores position from session
+const currentIndex = ref(getSessionIndex())
 
 // Computed property for visible products (3 items starting from current index)
 const products = computed(() => {
@@ -276,6 +290,7 @@ const navigateLeft = () => {
     // Loop to the end (showing last 3 items)
     currentIndex.value = fullSequence.value.length - 3
   }
+  saveSessionIndex(currentIndex.value)
 }
 
 const navigateRight = () => {
@@ -285,6 +300,7 @@ const navigateRight = () => {
     // Loop back to the beginning
     currentIndex.value = 0
   }
+  saveSessionIndex(currentIndex.value)
 }
 </script>
 

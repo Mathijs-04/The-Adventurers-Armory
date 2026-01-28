@@ -2,6 +2,7 @@
 import ProductCard from './ProductCard.vue'
 import FlameGif from '../assets/flame.gif'
 import DetailBackground from '../assets/DetailBackground.webp'
+import ChainImage from '../assets/chain.webp'
 
 const props = defineProps({
   product: {
@@ -15,6 +16,8 @@ const props = defineProps({
   <div class="details">
     <img :src="FlameGif" alt="Detail Flame 1" class="detail-flame detail-flame-1" />
     <img :src="FlameGif" alt="Detail Flame 2" class="detail-flame detail-flame-2" />
+    <img :src="ChainImage" alt="Chain Left" class="chain chain-left" />
+    <img :src="ChainImage" alt="Chain Right" class="chain chain-right" />
     <div class="product-detail">
       <ProductCard :product="product" :disable-hover="true" />
       <div class="product-info">
@@ -61,6 +64,19 @@ const props = defineProps({
   text-align: center;
   width: 100%;
   border-radius: 10px;
+  animation: sway 8s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0% {
+    transform: translateX(-8px);
+  }
+  50% {
+    transform: translateX(8px);
+  }
+  100% {
+    transform: translateX(-8px);
+  }
 }
 
 .detail-background-image {
@@ -140,5 +156,40 @@ const props = defineProps({
 .detail-flame-2 {
   top: 381px;
   left: 163px;
+}
+
+/* Chain styling - fixed pixel positions for 1920x1080 canvas */
+.chain {
+  position: absolute;
+  height: 100px;
+  width: auto;
+  pointer-events: none;
+  z-index: 8;
+  opacity: 0.9;
+  animation: chain-sway 8s ease-in-out infinite;
+}
+
+.chain-left {
+  top: 540px;
+  left: 738px;
+  transform-origin: center center;
+}
+
+.chain-right {
+  top: 540px;
+  left: 1050px;
+  transform-origin: center center;
+}
+
+@keyframes chain-sway {
+  0% {
+    transform: rotate(90deg) translateY(-8px);
+  }
+  50% {
+    transform: rotate(90deg) translateY(8px);
+  }
+  100% {
+    transform: rotate(90deg) translateY(-8px);
+  }
 }
 </style>

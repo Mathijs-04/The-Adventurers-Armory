@@ -20,11 +20,11 @@ html, body {
   font-family: 'Firlest', Arial, sans-serif;
 }
 
-/* Viewport container - fills the screen with background image */
+/* Viewport container - shows background.webp from start */
 #viewport-container {
   width: 100vw;
   height: 100vh;
-  background-image: url('./assets/background.webp');
+  background-image: url('/src/assets/background.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,6 +32,12 @@ html, body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+}
+
+#viewport-container.loaded {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Fixed 1920x1080 canvas (16:9 aspect ratio) - scales to fit viewport */
