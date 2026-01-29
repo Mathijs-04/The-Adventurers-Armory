@@ -50,174 +50,174 @@ const itemImages = [
 // Item data with names, descriptions, and prices
 const itemData = [
   {
-    name: 'Placeholder Title Item 1',
+    name: 'Frostbite Axe',
     description: 'This text is the placeholder description for item 1',
-    price: 1250
+    price: 1850
   },
   {
-    name: 'Placeholder Title Item 2',
+    name: 'Burning Battleaxe',
     description: 'This text is the placeholder description for item 2',
-    price: 450
-  },
-  {
-    name: 'Placeholder Title Item 3',
-    description: 'This text is the placeholder description for item 3',
-    price: 3200
-  },
-  {
-    name: 'Placeholder Title Item 4',
-    description: 'This text is the placeholder description for item 4',
-    price: 2800
-  },
-  {
-    name: 'Placeholder Title Item 5',
-    description: 'This text is the placeholder description for item 5',
     price: 1950
   },
   {
-    name: 'Placeholder Title Item 6',
+    name: 'Burning Barbute',
+    description: 'This text is the placeholder description for item 3',
+    price: 1200
+  },
+  {
+    name: 'Sky Blade',
+    description: 'This text is the placeholder description for item 4',
+    price: 900
+  },
+  {
+    name: 'Jade Dagger',
+    description: 'This text is the placeholder description for item 5',
+    price: 1450
+  },
+  {
+    name: 'Ember Knife',
     description: 'This text is the placeholder description for item 6',
+    price: 750
+  },
+  {
+    name: 'Book of Beasts',
+    description: 'This text is the placeholder description for item 7',
+    price: 1700
+  },
+  {
+    name: 'Tome of Stars',
+    description: 'This text is the placeholder description for item 8',
+    price: 2100
+  },
+  {
+    name: 'Curses for Dummies',
+    description: 'This text is the placeholder description for item 9',
+    price: 450
+  },
+  {
+    name: 'Tome of Heavens',
+    description: 'This text is the placeholder description for item 10',
     price: 3400
   },
   {
-    name: 'Placeholder Title Item 7',
-    description: 'This text is the placeholder description for item 7',
-    price: 1800
-  },
-  {
-    name: 'Placeholder Title Item 8',
-    description: 'This text is the placeholder description for item 8',
-    price: 950
-  },
-  {
-    name: 'Placeholder Title Item 9',
-    description: 'This text is the placeholder description for item 9',
-    price: 1100
-  },
-  {
-    name: 'Placeholder Title Item 10',
-    description: 'This text is the placeholder description for item 10',
-    price: 650
-  },
-  {
-    name: 'Placeholder Title Item 11',
+    name: 'Rootbound Tome',
     description: 'This text is the placeholder description for item 11',
     price: 1350
   },
   {
-    name: 'Placeholder Title Item 12',
+    name: 'Chronicles of the Oracle',
     description: 'This text is the placeholder description for item 12',
     price: 2200
   },
   {
-    name: 'Placeholder Title Item 13',
+    name: 'Plate of the Paladin',
     description: 'This text is the placeholder description for item 13',
-    price: 750
+    price: 3400
   },
   {
-    name: 'Placeholder Title Item 14',
+    name: 'Mantle of the Ranger',
     description: 'This text is the placeholder description for item 14',
-    price: 1650
+    price: 2840
   },
   {
-    name: 'Placeholder Title Item 15',
+    name: 'Armor of the Chosen',
     description: 'This text is the placeholder description for item 15',
-    price: 2900
+    price: 6500
   },
   {
-    name: 'Placeholder Title Item 16',
+    name: 'Mysterious Treasure',
     description: 'This text is the placeholder description for item 16',
+    price: 4500
+  },
+  {
+    name: 'The Queens Locket',
+    description: 'This text is the placeholder description for item 17',
+    price: 2170
+  },
+  {
+    name: 'The Cup of Kings',
+    description: 'This text is the placeholder description for item 18',
+    price: 890
+  },
+  {
+    name: 'Crown of the fallen King',
+    description: 'This text is the placeholder description for item 19',
+    price: 4535
+  },
+  {
+    name: 'Dragons Gem',
+    description: 'This text is the placeholder description for item 20',
     price: 1400
   },
   {
-    name: 'Placeholder Title Item 17',
-    description: 'This text is the placeholder description for item 17',
-    price: 1700
-  },
-  {
-    name: 'Placeholder Title Item 18',
-    description: 'This text is the placeholder description for item 18',
-    price: 2500
-  },
-  {
-    name: 'Placeholder Title Item 19',
-    description: 'This text is the placeholder description for item 19',
-    price: 3100
-  },
-  {
-    name: 'Placeholder Title Item 20',
-    description: 'This text is the placeholder description for item 20',
-    price: 2750
-  },
-  {
-    name: 'Placeholder Title Item 21',
+    name: 'Blight Poison',
     description: 'This text is the placeholder description for item 21',
-    price: 1850
+    price: 640
   },
   {
-    name: 'Placeholder Title Item 22',
+    name: 'Everburn Concoction',
     description: 'This text is the placeholder description for item 22',
-    price: 1200
+    price: 520
   },
   {
-    name: 'Placeholder Title Item 23',
+    name: 'Love Potion',
     description: 'This text is the placeholder description for item 23',
-    price: 3600
+    price: 1100
   },
   {
-    name: 'Placeholder Title Item 24',
+    name: 'Pixie Potion',
     description: 'This text is the placeholder description for item 24',
-    price: 2400
+    price: 1020
   },
   {
-    name: 'Placeholder Title Item 25',
+    name: 'Moonbrew',
     description: 'This text is the placeholder description for item 25',
-    price: 2100
+    price: 710
   },
   {
-    name: 'Placeholder Title Item 26',
+    name: 'Ring of Magica',
     description: 'This text is the placeholder description for item 26',
     price: 1950
   },
   {
-    name: 'Placeholder Title Item 27',
+    name: 'Dragonblade',
     description: 'This text is the placeholder description for item 27',
-    price: 800
+    price: 2800
   },
   {
-    name: 'Placeholder Title Item 28',
+    name: 'Trollslayers Hammer',
     description: 'This text is the placeholder description for item 28',
     price: 2300
   },
   {
-    name: 'Placeholder Title Item 29',
+    name: 'Axe of the Frostsworn',
     description: 'This text is the placeholder description for item 29',
-    price: 1600
+    price: 3600
   },
   {
-    name: 'Placeholder Title Item 30',
+    name: 'The Grim Reaper™',
     description: 'This text is the placeholder description for item 30',
-    price: 900
+    price: 6000
   },
   {
-    name: 'Placeholder Title Item 31',
+    name: 'Tomb of Giants Map',
     description: 'This text is the placeholder description for item 31',
-    price: 1900
+    price: 350
   },
   {
-    name: 'Placeholder Title Item 32',
+    name: 'Reapers Cove Map',
     description: 'This text is the placeholder description for item 32',
-    price: 1450
+    price: 480
   },
   {
-    name: 'Placeholder Title Item 33',
+    name: 'Elven Shoes of Speed',
     description: 'This text is the placeholder description for item 33',
-    price: 1150
+    price: 1710
   },
   {
-    name: 'Placeholder Title Item 34',
+    name: 'Barbarians Boots',
     description: 'This text is the placeholder description for item 34',
-    price: 1300
+    price: 280
   }
 ]
 
@@ -225,25 +225,31 @@ const itemData = [
 // Get or create sequence from sessionStorage
 const getSessionSequence = () => {
   const sessionKey = 'fantasy-shop-sequence'
+  const versionKey = 'fantasy-shop-version'
+  const currentVersion = 2 // Increment when data structure changes
 
-  // Check if we already have a sequence for this session
+  // Check if we have a valid cached sequence with correct version
   let storedSequence = sessionStorage.getItem(sessionKey)
-  if (storedSequence) {
+  let storedVersion = sessionStorage.getItem(versionKey)
+  
+  if (storedSequence && storedVersion === currentVersion.toString()) {
     return JSON.parse(storedSequence)
   }
 
-  // Create new shuffled sequence of all items (only on first load/reload)
-  const shuffled = [...itemImages].sort(() => Math.random() - 0.5)
+  // Create new shuffled sequence of all items
+  const shuffled = itemImages.map((image, index) => ({ image, originalIndex: index }))
+    .sort(() => Math.random() - 0.5)
 
   // Create full product sequence
-  const sequence = shuffled.map((image, index) => ({
-    id: index + 1,
-    image: image,
-    ...itemData.find((_, dataIndex) => dataIndex === itemImages.indexOf(image))
+  const sequence = shuffled.map((item, newIndex) => ({
+    id: newIndex + 1,
+    image: item.image,
+    ...itemData[item.originalIndex]
   }))
 
-  // Store in sessionStorage for persistence during navigation
+  // Store in sessionStorage with version for persistence during navigation
   sessionStorage.setItem(sessionKey, JSON.stringify(sequence))
+  sessionStorage.setItem(versionKey, currentVersion.toString())
   return sequence
 }
 
