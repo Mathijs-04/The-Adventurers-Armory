@@ -224,8 +224,8 @@ const itemData = [
 // Function to get or create session-persistent random sequence
 // Get or create sequence from sessionStorage
 const getSessionSequence = () => {
-  const sessionKey = 'fantasy-shop-sequence-v5'
-  const indexKey = 'fantasy-shop-index-v5'
+  const sessionKey = 'fantasy-shop-sequence-v6'
+  const indexKey = 'fantasy-shop-index-v6'
 
   // Check if we already have a sequence for this session
   let storedSequence = sessionStorage.getItem(sessionKey)
