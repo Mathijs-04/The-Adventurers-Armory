@@ -51,172 +51,172 @@ const itemImages = [
 const itemData = [
   {
     name: 'Frostbite Axe',
-    description: 'This text is the placeholder description for item 1',
+    description: 'Gloves strongly adviced!',
     price: 1850
   },
   {
     name: 'Burning Battleaxe',
-    description: 'This text is the placeholder description for item 2',
+    description: 'Gloves strongly adviced!',
     price: 1950
   },
   {
     name: 'Burning Barbute',
-    description: 'This text is the placeholder description for item 3',
+    description: 'The ideal helmet for Hotheads',
     price: 1200
   },
   {
     name: 'Sky Blade',
-    description: 'This text is the placeholder description for item 4',
+    description: 'Weighs less then a Pixie',
     price: 900
   },
   {
     name: 'Jade Dagger',
-    description: 'This text is the placeholder description for item 5',
+    description: 'Not intended for cooking',
     price: 1450
   },
   {
     name: 'Ember Knife',
-    description: 'This text is the placeholder description for item 6',
+    description: 'Ideal to cut and cook at the same time',
     price: 750
   },
   {
     name: 'Book of Beasts',
-    description: 'This text is the placeholder description for item 7',
+    description: 'Warning: Bites Back!',
     price: 1700
   },
   {
     name: 'Tome of Stars',
-    description: 'This text is the placeholder description for item 8',
+    description: 'For both Wizards and Astrology Fangirls',
     price: 2100
   },
   {
     name: 'Curses for Dummies',
-    description: 'This text is the placeholder description for item 9',
+    description: 'Cauldron not included',
     price: 450
   },
   {
     name: 'Tome of Heavens',
-    description: 'This text is the placeholder description for item 10',
+    description: '1 month of Cloud Hosting Included!',
     price: 3400
   },
   {
     name: 'Rootbound Tome',
-    description: 'This text is the placeholder description for item 11',
+    description: 'Might want to water this one',
     price: 1350
   },
   {
     name: 'Chronicles of the Oracle',
-    description: 'This text is the placeholder description for item 12',
+    description: 'Do not poke the eye',
     price: 2200
   },
   {
     name: 'Plate of the Paladin',
-    description: 'This text is the placeholder description for item 13',
+    description: 'Weighs about the same as a troll',
     price: 3400
   },
   {
     name: 'Mantle of the Ranger',
-    description: 'This text is the placeholder description for item 14',
+    description: '100% Moss',
     price: 2840
   },
   {
     name: 'Armor of the Chosen',
-    description: 'This text is the placeholder description for item 15',
+    description: 'Not intended for Losers',
     price: 6500
   },
   {
     name: 'Mysterious Treasure',
-    description: 'This text is the placeholder description for item 16',
+    description: 'Who knows what secrets this might hold?',
     price: 4500
   },
   {
     name: 'The Queens Locket',
-    description: 'This text is the placeholder description for item 17',
+    description: 'Contains a picture of some random guy',
     price: 2170
   },
   {
     name: 'The Cup of Kings',
-    description: 'This text is the placeholder description for item 18',
+    description: 'Not suitable for carbonated drinks',
     price: 890
   },
   {
     name: 'Crown of the fallen King',
-    description: 'This text is the placeholder description for item 19',
+    description: 'Not sure why he fell',
     price: 4535
   },
   {
     name: 'Dragons Gem',
-    description: 'This text is the placeholder description for item 20',
+    description: 'A lukewarm jewel',
     price: 1400
   },
   {
     name: 'Blight Poison',
-    description: 'This text is the placeholder description for item 21',
+    description: 'Tastes better then it looks',
     price: 640
   },
   {
     name: 'Everburn Concoction',
-    description: 'This text is the placeholder description for item 22',
+    description: 'A concoction to relight your inner fire!',
     price: 520
   },
   {
     name: 'Love Potion',
-    description: 'This text is the placeholder description for item 23',
+    description: 'Keep out of reach of children',
     price: 1100
   },
   {
     name: 'Pixie Potion',
-    description: 'This text is the placeholder description for item 24',
+    description: 'Makes you float and giggle',
     price: 1020
   },
   {
     name: 'Moonbrew',
-    description: 'This text is the placeholder description for item 25',
+    description: 'Not sure what it does, but it looks cool!',
     price: 710
   },
   {
     name: 'Ring of Magica',
-    description: 'This text is the placeholder description for item 26',
+    description: 'Size 52',
     price: 1950
   },
   {
     name: 'Dragonblade',
-    description: 'This text is the placeholder description for item 27',
+    description: 'Previous owner has been incinerated',
     price: 2800
   },
   {
     name: 'Trollslayers Hammer',
-    description: 'This text is the placeholder description for item 28',
+    description: 'Does not actually work against trolls',
     price: 2300
   },
   {
     name: 'Axe of the Frostsworn',
-    description: 'This text is the placeholder description for item 29',
+    description: 'Vanilla Flavour',
     price: 3600
   },
   {
-    name: 'The Grim Reaper™',
-    description: 'This text is the placeholder description for item 30',
+    name: 'The Grim Reaper 2000™',
+    description: 'The coolest way to harvest souls',
     price: 6000
   },
   {
     name: 'Tomb of Giants Map',
-    description: 'This text is the placeholder description for item 31',
+    description: 'Previous owner has been squished.',
     price: 350
   },
   {
     name: 'Reapers Cove Map',
-    description: 'This text is the placeholder description for item 32',
+    description: 'Does not include a Pirate Ship',
     price: 480
   },
   {
     name: 'Elven Shoes of Speed',
-    description: 'This text is the placeholder description for item 33',
+    description: 'Size 31',
     price: 1710
   },
   {
     name: 'Barbarians Boots',
-    description: 'This text is the placeholder description for item 34',
+    description: 'Smells funny',
     price: 280
   }
 ]
@@ -224,15 +224,12 @@ const itemData = [
 // Function to get or create session-persistent random sequence
 // Get or create sequence from sessionStorage
 const getSessionSequence = () => {
-  const sessionKey = 'fantasy-shop-sequence'
-  const versionKey = 'fantasy-shop-version'
-  const currentVersion = 2 // Increment when data structure changes
+  const sessionKey = 'fantasy-shop-sequence-v3'
+  const indexKey = 'fantasy-shop-index-v3'
 
-  // Check if we have a valid cached sequence with correct version
+  // Check if we already have a sequence for this session
   let storedSequence = sessionStorage.getItem(sessionKey)
-  let storedVersion = sessionStorage.getItem(versionKey)
-  
-  if (storedSequence && storedVersion === currentVersion.toString()) {
+  if (storedSequence) {
     return JSON.parse(storedSequence)
   }
 
@@ -247,22 +244,21 @@ const getSessionSequence = () => {
     ...itemData[item.originalIndex]
   }))
 
-  // Store in sessionStorage with version for persistence during navigation
+  // Store in sessionStorage for persistence during navigation
   sessionStorage.setItem(sessionKey, JSON.stringify(sequence))
-  sessionStorage.setItem(versionKey, currentVersion.toString())
   return sequence
 }
 
 // Get or create navigation position from sessionStorage
 const getSessionIndex = () => {
-  const indexKey = 'fantasy-shop-index'
+  const indexKey = 'fantasy-shop-index-v3'
   let storedIndex = sessionStorage.getItem(indexKey)
   return storedIndex ? parseInt(storedIndex, 10) : 0
 }
 
 // Save navigation position to sessionStorage
 const saveSessionIndex = (index) => {
-  const indexKey = 'fantasy-shop-index'
+  const indexKey = 'fantasy-shop-index-v3'
   sessionStorage.setItem(indexKey, index.toString())
 }
 
