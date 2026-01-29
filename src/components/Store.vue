@@ -206,7 +206,7 @@ const itemData = [
   },
   {
     name: 'Reapers Cove Map',
-    description: 'Does not include a Pirate Ship',
+    description: 'Pirate Ship not included!',
     price: 480
   },
   {
@@ -224,8 +224,8 @@ const itemData = [
 // Function to get or create session-persistent random sequence
 // Get or create sequence from sessionStorage
 const getSessionSequence = () => {
-  const sessionKey = 'fantasy-shop-sequence-v3'
-  const indexKey = 'fantasy-shop-index-v3'
+  const sessionKey = 'fantasy-shop-sequence-v4'
+  const indexKey = 'fantasy-shop-index-v4'
 
   // Check if we already have a sequence for this session
   let storedSequence = sessionStorage.getItem(sessionKey)
