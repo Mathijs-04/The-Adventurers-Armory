@@ -64,18 +64,18 @@ const props = defineProps({
   text-align: center;
   width: 100%;
   border-radius: 10px;
-  animation: sway 8s ease-in-out infinite;
+  animation: sway 12s ease-in-out infinite;
 }
 
 @keyframes sway {
   0% {
-    transform: translateX(-8px);
+    transform: translateX(-3px);
   }
   50% {
-    transform: translateX(8px);
+    transform: translateX(3px);
   }
   100% {
-    transform: translateX(-8px);
+    transform: translateX(-3px);
   }
 }
 
@@ -166,7 +166,7 @@ const props = defineProps({
   pointer-events: none;
   z-index: 8;
   opacity: 0.9;
-  animation: chain-sway 8s ease-in-out infinite;
+  animation: chain-sway 12s ease-in-out infinite;
 }
 
 .chain-left {
@@ -183,13 +183,13 @@ const props = defineProps({
 
 @keyframes chain-sway {
   0% {
-    transform: rotate(90deg) translateY(-8px);
+    transform: rotate(90deg) translateY(3px);
   }
   50% {
-    transform: rotate(90deg) translateY(8px);
+    transform: rotate(90deg) translateY(-3px);
   }
   100% {
-    transform: rotate(90deg) translateY(-8px);
+    transform: rotate(90deg) translateY(3px);
   }
 }
 </style>
