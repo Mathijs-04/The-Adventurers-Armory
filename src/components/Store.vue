@@ -76,7 +76,7 @@ const itemData = [
   },
   {
     name: 'Ember Knife',
-    description: 'Ideal to cut and cook at the same time',
+    description: 'Ideal for cooking',
     price: 750
   },
   {
@@ -116,7 +116,7 @@ const itemData = [
   },
   {
     name: 'Mantle of the Ranger',
-    description: '100% Moss',
+    description: '100% Organic Moss',
     price: 2840
   },
   {
@@ -151,12 +151,12 @@ const itemData = [
   },
   {
     name: 'Blight Poison',
-    description: 'Tastes better then it looks',
+    description: 'Tastes better than it looks',
     price: 640
   },
   {
     name: 'Everburn Concoction',
-    description: 'A concoction to relight your inner fire!',
+    description: 'Warning: Lethal for Yetis',
     price: 520
   },
   {
@@ -216,7 +216,7 @@ const itemData = [
   },
   {
     name: 'Barbarians Boots',
-    description: 'Smells funny',
+    description: 'They smell funny',
     price: 280
   }
 ]
@@ -224,8 +224,8 @@ const itemData = [
 // Function to get or create session-persistent random sequence
 // Get or create sequence from sessionStorage
 const getSessionSequence = () => {
-  const sessionKey = 'fantasy-shop-sequence-v4'
-  const indexKey = 'fantasy-shop-index-v4'
+  const sessionKey = 'fantasy-shop-sequence-v5'
+  const indexKey = 'fantasy-shop-index-v5'
 
   // Check if we already have a sequence for this session
   let storedSequence = sessionStorage.getItem(sessionKey)
