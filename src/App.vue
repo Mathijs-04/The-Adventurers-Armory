@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import Homepage from './components/Homepage.vue'
 import Store from './components/Store.vue'
 import Details from './components/Details.vue'
@@ -33,33 +33,14 @@ const viewDetails = (product) => {
   currentView.value = 'details'
 }
 
-const setBackgroundImage = (backgroundName) => {
-  const viewportContainer = document.getElementById('viewport-container')
-  if (viewportContainer) {
-    viewportContainer.style.backgroundImage = `url('/src/assets/${backgroundName}.webp')`
-  }
-}
-
 const handleLoadingComplete = () => {
   isLoading.value = false
-  // Add loaded class to viewport container and set initial background
+  // Add loaded class to viewport container
   const viewportContainer = document.getElementById('viewport-container')
   if (viewportContainer) {
     viewportContainer.classList.add('loaded')
-    setBackgroundImage('background')
   }
 }
-
-// Watch for view changes and update background accordingly
-watch(currentView, (newView) => {
-  if (newView === 'homepage') {
-    setBackgroundImage('background')
-  } else if (newView === 'store') {
-    setBackgroundImage('background2')
-  } else if (newView === 'details') {
-    setBackgroundImage('background6')
-  }
-})
 
 // Toggle fullscreen mode
 const toggleFullscreen = async () => {
