@@ -1,6 +1,7 @@
 <script setup>
 import LogoImage from '../assets/logo.webp'
 import FlameGif from '../assets/flame.gif'
+import HomeBackground from '../assets/HomeViewV2.webp'
 import CustomButton from './CustomButton.vue'
 
 const emit = defineEmits(['navigateToStore'])
@@ -12,7 +13,7 @@ const goToStore = () => {
 
 <template>
   <div class="homepage">
-    <div class="background-container">
+    <div class="background-container" :style="{ backgroundImage: `url(${HomeBackground})` }">
       <img :src="FlameGif" alt="Flame 1" class="flame-gif flame-1" />
       <img :src="FlameGif" alt="Flame 2" class="flame-gif flame-2" />
       <img :src="FlameGif" alt="Flame 3" class="flame-gif flame-3" />
@@ -50,7 +51,6 @@ const goToStore = () => {
   left: 0;
   width: 1920px;
   height: 1080px;
-  background-image: url('../assets/HomeViewV2.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

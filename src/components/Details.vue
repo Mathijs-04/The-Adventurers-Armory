@@ -2,6 +2,7 @@
 import ProductCard from './ProductCard.vue'
 import FlameGif from '../assets/flame.gif'
 import DetailBackground from '../assets/DetailBackground.webp'
+import DetailViewBackground from '../assets/DetailView.webp'
 import ChainImage from '../assets/chain.webp'
 
 const props = defineProps({
@@ -13,7 +14,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="details">
+  <div class="details" :style="{ backgroundImage: `url(${DetailViewBackground})` }">
     <img :src="FlameGif" alt="Detail Flame 1" class="detail-flame detail-flame-1" />
     <img :src="FlameGif" alt="Detail Flame 2" class="detail-flame detail-flame-2" />
     <img :src="ChainImage" alt="Chain Left" class="chain chain-left" />
@@ -39,7 +40,6 @@ const props = defineProps({
   left: 0;
   width: 1920px;
   height: 1080px;
-  background-image: url('../assets/DetailView.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

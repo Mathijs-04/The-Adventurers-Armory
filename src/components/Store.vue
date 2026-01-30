@@ -3,6 +3,7 @@ import Parchment from '../assets/Parchment.webp'
 import FlameGif from '../assets/flame.gif'
 import ArrowNormal from '../assets/Arrow-NA.webp'
 import ArrowActive from '../assets/Arrow-A.webp'
+import StoreBackground from '../assets/StoreView.webp'
 import ProductCard from './ProductCard.vue'
 import { ref, computed } from 'vue'
 import { playButtonSound } from '../composables/useSound.js'
@@ -307,7 +308,7 @@ const navigateRight = () => {
 </script>
 
 <template>
-  <div class="store">
+  <div class="store" :style="{ backgroundImage: `url(${StoreBackground})` }">
     <img :src="FlameGif" alt="Store Flame 1" class="store-flame store-flame-1" />
     <img :src="FlameGif" alt="Store Flame 2" class="store-flame store-flame-2" />
 
@@ -363,7 +364,6 @@ const navigateRight = () => {
   left: 0;
   width: 1920px;
   height: 1080px;
-  background-image: url('../assets/StoreView.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
