@@ -481,12 +481,12 @@ const navigateRight = () => {
 }
 
 .store-flame-1 {
-  top: 173px;
+  top: 185px;
   left: 1690px;
 }
 
 .store-flame-2 {
-  top: 173px;
-  left: 211px;
+  top: 185px;
+  left: 215px;
 }
 </style>

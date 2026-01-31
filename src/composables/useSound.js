@@ -1,19 +1,86 @@
 // Global sound state management
 import { ref } from 'vue'
 import ButtonSound from '../assets/sounds/ButtonSound.mp3'
-import BackgroundMusic from '../assets/sounds/Background.mp3'
+
+import Track1 from '../assets/sounds/soundtrack 1.mp3'
+import Track2 from '../assets/sounds/soundtrack 2.mp3'
+import Track3 from '../assets/sounds/soundtrack 3.mp3'
+import Track4 from '../assets/sounds/soundtrack 4.mp3'
+import Track5 from '../assets/sounds/soundtrack 5.mp3'
 
 // Global sound state
 const soundEnabled = ref(false)
 
 // Audio instances pool to avoid delays and allow overlapping sounds
 let audioPool = []
-const POOL_SIZE = 5 // Keep multiple instances ready
+const POOL_SIZE = 5
 let audioReady = false
 
-// Background music instance
-let backgroundAudio = null
-let backgroundReady = false
+// ===== Soundtrack playlist system =====
+const tracks = [Track1, Track2, Track3, Track4, Track5]
+
+let playlist = []
+let currentTrackIndex = -1
+let soundtrackAudio = null
+let soundtrackReady = false
+let delayTimeout = null
+
+const VOLUME = 0.4
+
+// Fisher–Yates shuffle
+const shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+
+// Create a new shuffled playlist
+const resetPlaylist = () => {
+  playlist = shuffle([...tracks])
+  currentTrackIndex = -1
+}
+
+// Prepare audio element for soundtrack
+const initSoundtrackAudio = () => {
+  if (!soundtrackAudio) {
+    soundtrackAudio = new Audio()
+    soundtrackAudio.preload = 'auto'
+    soundtrackAudio.volume = VOLUME
+
+    soundtrackAudio.addEventListener('ended', () => {
+      if (!soundEnabled.value) return
+
+      delayTimeout = setTimeout(() => {
+        playNextTrack()
+      }, 5000) // 5 second pause between tracks
+    })
+
+    soundtrackReady = true
+  }
+}
+
+// Play next track in shuffled playlist
+const playNextTrack = () => {
+  if (!soundEnabled.value) return
+
+  currentTrackIndex++
+
+  // If we reached the end → reshuffle
+  if (currentTrackIndex >= playlist.length) {
+    resetPlaylist()
+    currentTrackIndex = 0
+  }
+
+  const nextTrack = playlist[currentTrackIndex]
+
+  soundtrackAudio.src = nextTrack
+  soundtrackAudio.currentTime = 0
+  soundtrackAudio.play().catch(err => {
+    console.warn('Failed to play soundtrack:', err)
+  })
+}
 
 // Initialize audio pool immediately
 const initAudioPool = () => {
@@ -21,84 +88,53 @@ const initAudioPool = () => {
     for (let i = 0; i < POOL_SIZE; i++) {
       const audio = new Audio(ButtonSound)
       audio.preload = 'auto'
-      audio.volume = 0.3 // 50% less volume (70% quieter than original)
+      audio.volume = 0.3
 
-      // Mark as ready when loaded
-      audio.addEventListener('canplaythrough', () => {
-        audioReady = true
-      }, { once: true })
+      audio.addEventListener(
+        'canplaythrough',
+        () => {
+          audioReady = true
+        },
+        { once: true }
+      )
 
       audioPool.push(audio)
     }
   }
 }
 
-// Initialize background music
-const initBackgroundMusic = () => {
-  if (!backgroundAudio) {
-    backgroundAudio = new Audio(BackgroundMusic)
-    backgroundAudio.preload = 'auto'
-    backgroundAudio.volume = 0.3 // Much quieter than button sounds
-    backgroundAudio.loop = false // We'll handle looping manually
-
-    // Mark as ready when loaded
-    backgroundAudio.addEventListener('canplaythrough', () => {
-      backgroundReady = true
-    }, { once: true })
-
-    // Handle music ending - wait 10 seconds then restart
-    backgroundAudio.addEventListener('ended', () => {
-      if (soundEnabled.value) {
-        setTimeout(() => {
-          if (soundEnabled.value && backgroundReady) {
-            backgroundAudio.currentTime = 0
-            backgroundAudio.play().catch(error => {
-              console.warn('Failed to restart background music:', error)
-            })
-          }
-        }, 10000) // 10 seconds delay
-      }
-    })
-  }
-}
-
-// Initialize both audio systems immediately when module loads
+// Initialize both systems when module loads
 initAudioPool()
-initBackgroundMusic()
+initSoundtrackAudio()
+resetPlaylist()
 
 // Get next available audio instance from pool
 const getNextAudio = () => {
-  // Find an audio that's not currently playing
   for (const audio of audioPool) {
     if (audio.paused || audio.ended || audio.currentTime === 0) {
       return audio
     }
   }
-  // If all are playing, return the first one (it will restart)
   return audioPool[0]
 }
 
-// Control background music based on sound state
-const updateBackgroundMusic = () => {
-  if (!backgroundAudio || !backgroundReady) return
+// Control soundtrack based on sound state
+const updateSoundtrack = () => {
+  if (!soundtrackReady) return
 
   if (soundEnabled.value) {
-    // Start background music
-    backgroundAudio.currentTime = 0
-    backgroundAudio.play().catch(error => {
-      console.warn('Failed to play background music:', error)
-    })
+    playNextTrack()
   } else {
-    // Stop background music
-    backgroundAudio.pause()
-    backgroundAudio.currentTime = 0
+    if (delayTimeout) clearTimeout(delayTimeout)
+    soundtrackAudio.pause()
+    soundtrackAudio.currentTime = 0
   }
 }
 
 // Toggle sound state
 export const toggleSound = () => {
   soundEnabled.value = !soundEnabled.value
-  updateBackgroundMusic()
+  updateSoundtrack()
 }
 
 // Get current sound state
@@ -117,7 +153,7 @@ export const playButtonSound = () => {
   }
 }
 
-// Reactive sound state for components that need to watch it
+// Reactive sound state for components
 export const useSound = () => {
   return {
     soundEnabled,

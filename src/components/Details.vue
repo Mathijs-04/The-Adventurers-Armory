@@ -64,7 +64,7 @@ const props = defineProps({
   text-align: center;
   width: 100%;
   border-radius: 10px;
-  animation: sway 12s ease-in-out infinite;
+  animation: sway 8s ease-in-out infinite;
 }
 
 @keyframes sway {
@@ -99,10 +99,10 @@ const props = defineProps({
 
 .product-title {
   font-family: 'Firlest', Arial, sans-serif;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 100;
   color: white;
-  margin: 0 0 15px 0;
+  margin: -15px 0 15px 0;
   letter-spacing: 2px;
   text-shadow:
     -1px -1px 0 #8B4513,
@@ -119,7 +119,7 @@ const props = defineProps({
 
 .product-description {
   font-family: 'Firlest', Arial, sans-serif;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 100;
   color: white;
   margin: 0;
@@ -166,7 +166,7 @@ const props = defineProps({
   pointer-events: none;
   z-index: 8;
   opacity: 0.9;
-  animation: chain-sway 12s ease-in-out infinite;
+  animation: chain-sway 8s ease-in-out infinite;
 }
 
 .chain-left {

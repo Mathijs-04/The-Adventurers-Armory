@@ -25,7 +25,7 @@ const { soundEnabled, toggleSound } = useSound()
 /* Fixed canvas coordinate system: 1920x1080px */
 .sound-toggle {
   position: absolute;
-  top: 20px;
+  top: 15px;
   right: 20px;
   background-color: transparent;
   border: none;
