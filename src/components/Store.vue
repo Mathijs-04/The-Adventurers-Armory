@@ -53,12 +53,12 @@ const itemImages = [
 const itemData = [
   {
     name: 'Frostbite Axe',
-    description: 'Gloves strongly adviced!',
+    description: 'Gloves strongly advised!',
     price: 1850
   },
   {
     name: 'Burning Battleaxe',
-    description: 'Gloves strongly adviced!',
+    description: 'Gloves strongly advised!',
     price: 1950
   },
   {
