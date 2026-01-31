@@ -7,6 +7,7 @@ import StoreBackground from '../assets/StoreView.webp'
 import ProductCard from './ProductCard.vue'
 import { ref, computed } from 'vue'
 import { playButtonSound } from '../composables/useSound.js'
+import DragonGif from '../assets/dragon.gif'
 
 const emit = defineEmits(['viewDetails'])
 
@@ -309,6 +310,7 @@ const navigateRight = () => {
 
 <template>
   <div class="store" :style="{ backgroundImage: `url(${StoreBackground})` }">
+    <img :src="DragonGif" class="store-dragon" />
     <img :src="FlameGif" alt="Store Flame 1" class="store-flame store-flame-1" />
     <img :src="FlameGif" alt="Store Flame 2" class="store-flame store-flame-2" />
 
@@ -489,4 +491,32 @@ const navigateRight = () => {
   top: 185px;
   left: 215px;
 }
+
+.store-dragon {
+  position: absolute;
+  top: 80px;       /* height in sky */
+  left: 560px;     /* start position */
+  width: 60px;     /* small dragon */
+
+  pointer-events: none;
+  z-index: 8;
+  opacity: 0;
+
+  animation: dragonFly 30s linear infinite 10s;
+  animation-direction: alternate; /* <-- makes it go back and forth */
+}
+
+@keyframes dragonFly {
+  0% {
+    left: 560px;   /* start */
+    opacity: 0;
+  }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% {
+    left: 1300px;  /* endpoint */
+    opacity: 0;
+  }
+}
+
 </style>
