@@ -502,20 +502,57 @@ const navigateRight = () => {
   z-index: 8;
   opacity: 0;
 
-  animation: dragonFly 30s linear infinite 10s;
-  animation-direction: alternate; /* <-- makes it go back and forth */
+  animation: dragonFly 60s linear infinite;
 }
 
 @keyframes dragonFly {
-  0% {
-    left: 560px;   /* start */
+  /* Initial 8s pause - invisible at left */
+  0%, 13.33% {
+    left: 560px;
     opacity: 0;
+    transform: scaleX(1);
   }
-  5% { opacity: 1; }
-  95% { opacity: 1; }
-  100% {
-    left: 1300px;  /* endpoint */
+  
+  /* Fade in and fly left to right */
+  14.5% {
+    left: 560px;
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  
+  /* Flying left to right */
+  48.5% {
+    left: 1300px;
+    opacity: 1;
+    transform: scaleX(1);
+  }
+  
+  /* Fade out at right, 8s pause */
+  50%, 63.33% {
+    left: 1300px;
     opacity: 0;
+    transform: scaleX(1);
+  }
+  
+  /* Fade in flipped and fly right to left */
+  64.5% {
+    left: 1300px;
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+  
+  /* Flying right to left (flipped) */
+  98.5% {
+    left: 560px;
+    opacity: 1;
+    transform: scaleX(-1);
+  }
+  
+  /* Fade out at left for next cycle */
+  100% {
+    left: 560px;
+    opacity: 0;
+    transform: scaleX(-1);
   }
 }
 
